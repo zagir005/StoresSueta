@@ -1,0 +1,58 @@
+﻿<Window x:Class="StoresApplication.View.OwnershipView.OwnershipItemWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StoresApplication.View.OwnershipView"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Light"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        Height="Auto" Width="Auto"
+        Padding="100"
+        Title="OwnershipItemWindow">
+    <Grid>
+        <StackPanel Margin="20" Width="Auto" Height="Auto">
+            <TextBlock Text="Редактировать данные" Margin="0,0,0,20" FontSize="14" HorizontalAlignment="Center"/>
+            <StackPanel Width="Auto" Height="Auto">
+                <ComboBox 
+                    Name="stores"
+                    SelectedItem="{Binding SelectedStoreOwner}" 
+                    ItemsSource="{Binding StoreOwnersList}"
+                    Text="{Binding Path=SelectedStoreOwner.Name}"
+                    DisplayMemberPath="Name"
+                    Padding="10" Margin="0,5,0,5" 
+                    materialDesign:HintAssist.Hint="Владелец" />
+                <ComboBox 
+                    Name="storeOwners"
+                    SelectedItem="{Binding SelectedStore}" 
+                    ItemsSource="{Binding StoresList}" 
+                    Text="{Binding Path=SelectedStore.Name}"
+                    DisplayMemberPath="Name"
+                    Padding="10" Margin="0,5,0,5" 
+                    materialDesign:HintAssist.Hint="Магазин"/>
+                
+                <TextBox 
+                    Text="{Binding Deposit}" 
+                    Padding="10" Margin="0,5,0,5" 
+                    materialDesign:HintAssist.Hint="Депозит"/>
+                
+                <DatePicker
+                    SelectedDate="{Binding RegisterDate}"
+                    Padding="10" Margin="0,5,0,5" 
+                    materialDesign:HintAssist.Hint="Дата регистрации"/>
+            </StackPanel>
+
+            <DockPanel Width="Auto" Margin="0,10,0,0">
+                <Button Width="100" Content="Ок" DockPanel.Dock="Right" Name="OkBtn" Click="OkBtn_Click" />
+                <Button Width="100" Content="Отменить"  DockPanel.Dock="Right" Name="CancelBtn" IsCancel="True"/>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</Window>

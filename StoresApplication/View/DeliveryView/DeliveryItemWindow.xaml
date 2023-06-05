@@ -1,0 +1,47 @@
+﻿<Window x:Class="StoresApp.View.DeliveryView.DeliveryItemWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StoresApp.View.DeliveryView"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Light"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        Height="Auto" Width="Auto"
+        Padding="100"
+        Title="DeliveryItemWindow" >
+    <Grid>
+        <StackPanel Margin="20" Width="Auto" Height="Auto">
+            <TextBlock Text="Редактировать данные" Margin="0,0,0,20" FontSize="14" HorizontalAlignment="Center"/>
+            <StackPanel Width="Auto" Height="Auto">
+                <ComboBox 
+                    Name="stores"
+                    SelectedItem="{Binding SelectedStore}" 
+                    ItemsSource="{Binding StoresList}"
+                    Text="{Binding Path=SelectedStore.Name}"
+                    DisplayMemberPath="Name"
+                    Padding="10" Margin="0,5,0,5" materialDesign:HintAssist.Hint="Магазин" />
+                <ComboBox 
+                    Name="vendors"
+                    SelectedItem="{Binding SelectedVendor}" 
+                    ItemsSource="{Binding VendorsList}" 
+                    Text="{Binding Path=SelectedVendor.Name}"
+                    DisplayMemberPath="Name"
+                    Padding="10" Margin="0,5,0,5" materialDesign:HintAssist.Hint="Поставщик"/>
+                <TextBox Text="{Binding Price}" Padding="10" Margin="0,5,0,5" materialDesign:HintAssist.Hint="Цена"/>
+            </StackPanel>
+
+            <DockPanel Width="Auto" Margin="0,10,0,0">
+                <Button Width="100" Content="Ок" DockPanel.Dock="Right" Name="OkBtn" Click="OkBtn_Click" />
+                <Button Width="100" Content="Отменить"  DockPanel.Dock="Right" Name="CancelBtn" IsCancel="True"/>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,56 @@
+﻿<Page x:Class="StoresApplication.View.FilterView.FilterPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StoresApplication.View.FilterView"
+      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Light"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="FilterPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel 
+            Orientation="Horizontal"
+            Grid.Row="0">
+            <ComboBox
+                Margin="10"
+                SelectionChanged="ComboBox_SelectionChanged"
+                materialDesign:HintAssist.Hint="Выберите фильтр">
+                <ComboBoxItem 
+                    Tag="yongKiev"
+                    Content="Самый молодой предприниматель, владеющий магазином в районе 'Киевский'"/>
+                <ComboBoxItem 
+                    Tag="Small18"
+                    Content="Случаи, когда регистрировалось владение лицами, не достигшими 18 лет"/>
+                <ComboBoxItem 
+                    Tag="DifferentOwner"
+                    Content="Случаи, когда больше 50% уставного капитала магазина внесено предпринимателем, проживающим в другом районе"/>
+                <ComboBoxItem 
+                    Tag="kuznec"
+                    Content="Список профилей магазинов, которыми владеет предприниматель 'Кузнецов' в порядке убывания вложенного в них капитала"/>
+            </ComboBox>
+        </StackPanel>
+        <Separator Grid.Row="1" Margin="10" Background="#FFACACAC"/>
+        <DataGrid 
+            Name="dataGrid"
+            Width="Auto"
+            Grid.Row="2"
+            AutoGenerateColumns="False"
+            SelectionMode="Single"
+            IsReadOnly="True">
+        </DataGrid>
+    </Grid>
+</Page>
